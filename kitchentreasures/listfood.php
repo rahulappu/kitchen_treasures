@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>userhome</title>
-  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>staffhome</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- =======================================================
-  Theme Name: Delicious
-  Theme URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
-  Author: BootstrapMade.com
-  Author URL: https://bootstrapmade.com
-  ======================================================= -->
-</head>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- =======================================================
+        Theme Name: Delicious
+        Theme URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
+        Author: BootstrapMade.com
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+  </head>
 <body>
+  <div class="bg-color">
+    <header id="header">
+        <div class="container">
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="userhome.php"> Home </a>
 
-      <div class="container">
-        <div class="inner text-center">
-          <h1 class="logo-name">KITCHEN TREASURES</h1>
-          <h2>Food To fit your lifestyle & health.</h2>
+                <a href="logout.php">Logout</a>
+            </div>
+            <!-- Use any element to open the sidenav -->
+            <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+        </div>
+    </header>
+  <div class="container">
+    <div class="inner text-center">
+      <h1 class="logo-name">KITCHEN TREASURES</h1>
+      <h2></h2>
 <style>
 div.tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #9ACD32;
+  background-color:white;
 }
 
 /* Style the buttons inside the tab */
@@ -108,13 +120,19 @@ div.desc {
       ?>
 
       <div class="gallery">
-        <a target="_blank" href=<?php echo "viewdes.php?f_item_id={$row['f_item_id']}" ?> <?php echo"{$row['food_name']}"; ?> >
+        <a target="_blank" href=<?php echo "viewdes.php?f_item_id={$row['f_item_id']} & food_category={$row['food_category']}" ?>
+          <a target="_blank" href=<?php echo "viewdes.php?food_category={$row['food_category']}" ?>
+           <?php echo"{$row['food_name']}"; ?> >
           <td><img src="<?php echo $row['food_image']?>" height="300px" width="250px"/></td>
         </a>
         <div class="desc" >
           <table>
             <tr>
-              <td>NAME:</td>
+              <td>ITEM:</td>
+              <td><?php echo $row['food_name'];?></td>
+            </tr>
+            <tr>
+              <td>DESC:</td>
               <td><?php echo $row['food_description'];?></td>
             </tr>
             <tr>
@@ -151,7 +169,11 @@ div.desc {
         <div class="desc" >
           <table>
             <tr>
-              <td>NAME:</td>
+              <td>ITEM:</td>
+              <td><?php echo $row['food_name'];?></td>
+            </tr>
+            <tr>
+              <td>DESC:</td>
               <td><?php echo $row['food_description'];?></td>
             </tr>
             <tr>
@@ -159,7 +181,7 @@ div.desc {
               <td><?php echo $row['food_rate'];?></td>
             </tr>
             <tr>
-              <td>PREPARED DATE:</td>
+              <td>DATE:</td>
               <td><?php echo $row['fdate'];?></td>
             </tr>
           </table>
@@ -185,7 +207,11 @@ div.desc {
         <div class="desc" >
           <table>
             <tr>
-              <td>NAME:</td>
+              <td>ITEM:</td>
+              <td><?php echo $row['food_name'];?></td>
+            </tr>
+            <tr>
+              <td>DESC:</td>
               <td><?php echo $row['food_description'];?></td>
             </tr>
             <tr>
@@ -193,7 +219,7 @@ div.desc {
               <td><?php echo $row['food_rate'];?></td>
             </tr>
             <tr>
-              <td>PREPARED DATE:</td>
+              <td>DATE:</td>
               <td><?php echo $row['fdate'];?></td>
             </tr>
           </table>
@@ -209,7 +235,6 @@ div.desc {
     $result3=mysqli_query($con,"select * FROM `fooditems` WHERE `food_category`='Dinner'");
 
 
-
     while($row=mysqli_fetch_array($result3))
     {
 
@@ -222,7 +247,11 @@ div.desc {
         <div class="desc" >
           <table>
             <tr>
-              <td>NAME:</td>
+              <td>ITEM:</td>
+              <td><?php echo $row['food_name'];?></td>
+            </tr>
+            <tr>
+              <td>DESC:</td>
               <td><?php echo $row['food_description'];?></td>
             </tr>
             <tr>
@@ -230,7 +259,7 @@ div.desc {
               <td><?php echo $row['food_rate'];?></td>
             </tr>
             <tr>
-              <td>PREPARED DATE:</td>
+              <td>DATE:</td>
               <td><?php echo $row['fdate'];?></td>
             </tr>
           </table>
@@ -277,4 +306,12 @@ function openCity(evt, cityName) {
 }
 document.getElementById("defaultOpen").click();
 </script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
+</body>
 </html>

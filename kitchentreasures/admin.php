@@ -38,8 +38,7 @@ if(!isset($_SESSION['login_id']))
                   <a href="staffregistration.php">Add Staff Members</a>
 
                   <a href="viewstaff.php">View Staff Details</a>
-                  <a href="viewtransaction.php">View Transactions</a>
-
+                
                   <a href="editfooditems.php">Edit food Details</a>
                   <a href="viewbulorders.php">view bulk orders</a>
                   <a href="assigntask.php">Assign task to members</a>

@@ -1,6 +1,10 @@
 <?php
 include 'dbcon.php';
 session_start();
+if(!isset($_SESSION['email']))
+{
+	header("location:login.php");
+}
 if(isset($_POST['remove']))
 {
 
@@ -53,15 +57,20 @@ if(isset($_POST['submit']))
   ======================================================= -->
 
 </head>
+
 <body>
+	  <div class="container">
+			<div class="row">
+					<div class="col-xs-12 text-center" style="padding:60px;">
+					</div>
   <!--banner-->
 
 
 
 
-    <center>  <h2 class="logo-name">My CART</h2><center>
+    <center>  <h5 class="logo-name">My CART</h5><center>
       <center>   <td><a href="listfood.php"><input type="button" class="btn btn-imfo btn-read-more" name="listfood" value="Add Another Item"</a></td>
-     <td><a href="index.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="GoTo HOME"></a></td></center>
+     <td><a href="userhome.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="GoTo HOME"></a></td></center>
 
         <center>
         <br><br>
@@ -77,7 +86,7 @@ if(isset($_POST['submit']))
         include 'dbcon.php';
 
         $n=$_SESSION['login_id'];
-        $result=mysqli_query($con,"select * from foodorder where `login_id`='$n'");
+        $result=mysqli_query($con,"select * from foodorder where `login_id`='$n' and `status`='1'");
 
 
 

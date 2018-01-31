@@ -2,6 +2,11 @@
 <?php
 include 'dbcon.php';
 session_start();
+if(!isset($_SESSION['email']))
+{
+	header("location:login.php");
+}
+
 if(isset($_POST['submit']))
 {
 $a=$_POST["fname"];
@@ -28,7 +33,14 @@ if($arr)
 	echo"<script>alert('Username already exist!!!');</script>)";
 }
 else{*/
-$sql1="INSERT INTO `login`(`type_id`, `password`, `email`) VALUES ('2','$l','$k')";
+function encryptIt($q){
+    $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+    $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+    return( $qEncoded );
+}
+
+$encrypted = encryptIt($l);
+$sql1="INSERT INTO `login`(`type_id`, `password`, `email`) VALUES ('2','$encrypted','$k')";
 $result1=mysqli_query($con,$sql1);
 
 $logid="SELECT `login_id` FROM `login` WHERE `email`='$k'";
@@ -88,8 +100,8 @@ echo"<script>alert('Data Entered Successfully');</script>)";
             <div class="container">
                 <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="index">Home</a>
-                
+                  <a href="admin.php">Home</a>
+
                   <a href="feedback.php">Feedback </a>
                   <a href="logout.php">Logout </a>
 
@@ -175,7 +187,6 @@ echo"<script>alert('Data Entered Successfully');</script>)";
 
 
               <button class="btn btn-imfo btn-read-more" value="submit" name="submit">Save</button>
-              <button class="btn btn-imfo btn-read-more" value="submit" name="clear">Reset</button>
                           </div>
                         </div>
                       </div>

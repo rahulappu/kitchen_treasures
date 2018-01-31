@@ -1,3 +1,9 @@
+<?php
+include 'dbcon.php';
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +34,6 @@
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                   <a href="index.php"> Home </a>
                   <a href="addfooditems.php"> Add Food Items</a>
-                  <a href="viewtransaction.php">View My Transaction</a>
 
                 <a href="viewprofile.php">Edit Profile</a>
                     <a href="viewfeedback.php">View Feedback</a>
@@ -40,12 +45,17 @@
             </div>
         </header>
         <div class="container">
-        <div class="row">
-          <div class="inner text-center">
-            <h2 class="logo-name">KITCHEN TREASURES</h2>
-          </div>
-        </div>
-        </div>
+            <div class="row">
+                <div class="col-xs-12 text-center" style="padding:60px;">
+                  <h1 class="header-h">KITCHEN TREASURES</h1>
+                  <p class="header-p">Enjoy the taste of homely prepared food items</p>
+                </div>
+          <center>      <a href="myearnings.php">  <button class="btn btn-imfo btn-read-more" value="myearnings" name="myearnings">My Earnings</button> </a></center>
+
+</center>
+</tr>
+</table>
+</form>
       </div>
     </section>
     <!-- / banner -->

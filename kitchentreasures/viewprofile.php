@@ -66,6 +66,11 @@
 <?php
 include 'dbcon.php';
 session_start();
+if(!isset($_SESSION['email']))
+{
+	header("location:login.php");
+}
+
 ?>
 <?php
 $n=$_SESSION['login_id'];
@@ -109,6 +114,8 @@ while($row=mysqli_fetch_array($result4))
             <td>DISTRICT:</td>
             <td><?php echo $row['staff_district'];?></td>
           </tr>
+          <center>   <td><a href="staffhome.php"><input type="button" class="btn btn-imfo btn-read-more" name="sh" value="Go To Staff Home"</a></td></center>
+
         </table>
     </div>
   </div>
@@ -116,5 +123,7 @@ while($row=mysqli_fetch_array($result4))
 <?php
 }
 ?>
+<br><br>
+
 </body>
 </html>

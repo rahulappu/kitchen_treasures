@@ -1,6 +1,26 @@
 <?php
+
+
+
+
+function send($sms, $to) {
+
+    $sms = urlencode($sms);
+    $token = "16450f1d72300a5c5eec8a8e135c9d8c";
+    $sendercode="KTFOOD";
+    $url = "http://sms.safechaser.com/httpapi/httpapi?token=".$token."&sender=".$sendercode."&number=".$to.'&route=2&type=1&sms='.$sms;
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 50);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $datares = curl_exec($ch);
+    curl_close($ch);
+    return $datares;
+}
 include 'dbcon.php';
 session_start();
+
+
 if(isset($_POST['submit']))
 {
   $a=$_POST["fname"];
@@ -29,7 +49,15 @@ if(isset($_POST['submit']))
   echo"<script>alert('Username already exist!!!');</script>)";
 }
 else{*/
-$sql1="INSERT INTO `login`(`type_id`, `password`, `email`) VALUES ('3','$l','$k')";
+function encryptIt($q){
+    $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
+    $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
+    return( $qEncoded );
+}
+
+$encrypted = encryptIt($l);
+
+$sql1="INSERT INTO `login`(`type_id`, `password`, `email`) VALUES ('3','$encrypted','$k')";
 $logid="SELECT `login_id` FROM `login` WHERE `email`='$k'";
 $result2=mysqli_query($con,$logid);
 $q="";
@@ -45,6 +73,9 @@ $result1=mysqli_query($con,$sql1);
 $result=mysqli_query($con,$sql);
 
 echo"<script>alert('Data Entered Successfully');</script>)";
+$mess="Hai , Your registration for KITCHEN TREASURES FOOD ORDERING(kudumbasree) has been Successfully completed.Your user name=$k and password=$l";
+send($mess,$m);
+
 
 }
 
@@ -173,7 +204,7 @@ echo"<script>alert('Data Entered Successfully');</script>)";
 
 
 
-                    <button class="btn btn-imfo btn-read-more" value="submit" name="submit">Save</button>
+                    <button class="btn btn-imfo btn-read-more" value="submit" name="submit">Add Details</button>
                     <a class="btn btn-imfo btn-read-more" href="login.php">Login </a>
                   </form>
 
@@ -224,6 +255,15 @@ echo"<script>alert('Data Entered Successfully');</script>)";
 <script src="js/jquery.mixitup.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="contactform/contactform.js"></script>
+
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
 
 </body>
 </html>

@@ -27,11 +27,10 @@
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Home</a>
-
-            <a href="Edituprofile.html">Edit your Details</a>
-            <a href="uhistory.html">View Your History</a>
+            <a href="viewtransaction.php">View Your Transaction</a>
+            <a href="viewhistory.php">View Your History</a>
             <a href="feedback.php">Feedback</a>
-            <a href="bulkorder.html">Give Bulk Order</a>
+            <a href="bulkorder.php">Give Bulk Order</a>
 
             <a href="logout.php">Logout</a>
           </div>
@@ -46,7 +45,30 @@
 <br>
 <br>
           <a href="listfood.php">  <button class="btn btn-imfo btn-read-more" value="order" name="order">Order Your Food</button> </a>
-            <br>
+<br>
+<br>
+          <div class="col-md-12" style="padding-bottom:60px;">
+              <div class="item active left">
+                <div class="col-md-6 col-sm-6 left-images">
+                 <img src="img/event4.jpg" class="img-responsive">
+               </div>
+               <div class="col-md-6 col-sm-6 details-text">
+                <div class="content-holder">
+                  <h2 style="color:red;">ORDER BULK FOOD FOR AN EVENT!!!</h2>
+                  <p> kudumbasree in association with kitchen treasures are providing facility to book the food items in bulk amount for ,By this our Modern generation will get an oppurtunity to taste the traditional food items</p>
+
+    <div class="validation"></div>
+
+<table>
+<tr>
+
+  <a href="bulkorder.php">  <button class="btn btn-imfo btn-read-more" value="orderevent" name="orderevent">Event Oredering</button> </a>
+</tr>
+</table>
+
+</form>
+                </div>
+              </div><br>
             <br>
         </div>
         </div>

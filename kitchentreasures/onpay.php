@@ -1,46 +1,31 @@
 
 
 <!DOCTYPE html>
-  <html>
-  <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>view descricption</title>
-      <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-      <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+<html lang="en">
+  <head>
+<script>
+function p(){
 
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-  <body bgcolor="#E6E6FA">
+	  var val_phone= /^[0-9]{9,12}$/;
+	 $cn= document.getElementById('cn').value;
 
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>view descricption</title>
-        <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-        <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+	 if(!val_phone.test($cn)){
 
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>view descricption</title>
-            <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-            <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+      alert("enter valid card number or lack of sufficient digits");
+	   document.getElementById('cn').value='';
+	   $("#cn").focus();
+      return false;
+    }
 
-            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-            <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-            <link rel="stylesheet" type="text/css" href="css/style.css">
+}
+</script>
+  <div class="container">
+    <div class="inner text-center">
+    <center>  <h1 class="logo-name">KITCHEN TREASURES</h1></center>
+    <center>   <td><a href="listfood.php"><input type="button" class="btn btn-imfo btn-read-more" name="listfood" value="Add Another Item"</a></td>
+   <td><a href="userhome.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="GoTo HOME"></a></td>
+   <td><a href="mycart.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="View My Cart"></a></td></center>
+      <h2></h2>
         <?php
 
         $k="";
@@ -82,8 +67,9 @@
           include 'dbcon.php';
 
           session_start();
+          $w=$_SESSION['login_id'];
 
-          $result5=mysqli_query($con,"select * FROM `user_details` where `login_id`='$k'");
+          $result5=mysqli_query($con,"select * FROM `user_details` where `login_id`='$w'");
           while($row=mysqli_fetch_array($result5))
           {
 
@@ -151,6 +137,8 @@
 
             $sql="INSERT INTO `transaction`(`bankname`, `cardtype`,`cardnumber`, `login_id`,`total`,`tdate`,`f_item_id`,`type`) VALUES ('$a','$c','$d','$n','$l','$dt','$m','online')";
             $result1=mysqli_query($con,$sql);
+            $sql9="update `foodorder` set `status`=0 where `login_id`=$n";
+            $result9=mysqli_query($con,$sql9);
             echo"<script>alert('Success');</script>)";
 
             }
@@ -162,11 +150,10 @@
               <fieldset>
                 <legend>Transaction Details:</legend>
                 <table>
-                  tr>
+
                     <td>Bank</td>
 
                     <td><select name="bname">
-                      <option value="">--select--   </option>
 
                       <option value="Federal">Federal Bank     </option>
                       <option value="HDFC">HDFC Bank       </option>
@@ -179,7 +166,6 @@
                     <td>Payment Method</td>
 
                     <td><select name="payment">
-                      <option value="">--select--   </option>
 
                       <option value="Debit">Debit     </option>
                       <option value="Credit">Credit        </option>
@@ -201,7 +187,7 @@
                   </tr>
                   <tr>
                     <td> Card Number </td>
-                    <td><input type="text"  name="cn" id="cn" ></td>
+                    <td><input type="text"  name="cn" id="cn" onchange="p()"></td>
                   </tr>
                   <tr>
                     <td> Date </td>

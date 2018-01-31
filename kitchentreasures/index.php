@@ -1,6 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+<style>
+.round-button {
+width:10%;
+}
+.round-button-circle {
+width: 100%;
+height:0;
+padding-bottom: 100%;
+	border-radius: 50%;
+border:10px solid #98a1a4;
+	overflow:hidden;
+}
+round-button-circle {
+width: 100%;
+height:0;
+padding-bottom: 100%;
+	border-radius: 50%;
+border:10px solid #98a1a4;
+	overflow:hidden;
+
+	background: #fff;
+	background-opacity: 0;
+	box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+
+}
+.round-button a {
+	display:block;
+float:left;
+width:100%;
+padding-top:50%;
+	padding-bottom:50%;
+line-height:1em;
+margin-top:-0.5em;
+
+text-align:center;
+color:#e2eaf3;
+	font-family:Verdana;
+	font-size:1.2em;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+</style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KITCHEN TREASURES</title>
@@ -19,6 +66,9 @@
     ======================================================= -->
   </head>
   <body>
+
+
+</script>
     <!--banner-->
     <section id="banner">
       <div class="bg-color">
@@ -40,11 +90,14 @@
           <div class="inner text-center">
             <h1 class="logo-name">KITCHEN TREASURES</h1>
             <h2>Food To fit your lifestyle & health.</h2>
+            <a href="#menu-list">  <button class="btn btn-danger" value="submit" name="menu">View Most Prepared Dishes</button> </a>
+
 <br>
 <br>
-            <a href="login.php">  <button class="btn btn-imfo btn-read-more" value="submit" name="Login">Login</button> </a>
-              <br>
-              <br>
+<center><div class="round-button"><div class="round-button-border"></div><div class="round-button-circle"><a href="login.php" class="round-button">Login!!</a></div></div></center>
+
+
+
           </div>
         </div>
         </div>
@@ -87,6 +140,7 @@
                 <div class="col-md-1"></div>
             </div>
         </div>
+
     </section>
     <!--/about-->
     <!-- event -->

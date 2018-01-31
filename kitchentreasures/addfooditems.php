@@ -28,10 +28,18 @@ else{*/
 $sql="INSERT INTO `fooditems`(`food_name`, `login_id`,`food_rate`, `food_description`, `food_category`, `food_quantity` , `food_image`,`fdate` ) VALUES ('$a','$k','$b','$c','$d','$e','$j','$dt')";
 $result1=mysqli_query($con,$sql);
 
+$result=mysqli_query($con,"select max(f_item_id) from fooditems");
+$row=mysqli_fetch_array($result);
+$a=$row["max(f_item_id)"];
+echo "your uploaded food id ", $a;
 
 
 
-echo"<script>alert('Data Entered Successfully');</script>)";
+
+
+
+
+echo"<script>alert('Data Entered Successfully');</script>";
 
 }
 
@@ -77,10 +85,10 @@ echo"<script>alert('Data Entered Successfully');</script>)";
             <div class="container">
                 <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="#about">About</a>
-                  <a href="#event">Event</a>
-                  <a href="#menu-list">Menu</a>
-                  <a href="#contact">Feedback </a>
+                  <a href="staffhome.php">Staff Home</a>
+                  <a href="index.php">Home</a>
+
+                  <a href="logout.php">Logout</a>
                 </div>
                 <!-- Use any element to open the sidenav -->
                 <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -155,7 +163,6 @@ echo"<script>alert('Data Entered Successfully');</script>)";
 
                       <button class="btn btn-imfo btn-read-more" value="submit" name="submit">upload food items</button>
 
-							<a class="btn btn-imfo btn-read-more" href="events-details.html">Reset </a>
 
                           </div>
                         </div>

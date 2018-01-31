@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>view descricption</title>
-    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
-    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <div class="container">
+      <div class="inner text-center">
+      <center>  <h1 class="logo-name">KITCHEN TREASURES</h1></center>
+      <center>   <td><a href="listfood.php"><input type="button" class="btn btn-imfo btn-read-more" name="listfood" value="Add Another Item"</a></td>
+     <td><a href="userhome.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="GoTo HOME"></a></td>
+     <td><a href="mycart.php"><input type="button" class="btn btn-imfo btn-read-more" name="index" value="View My Cart"></a></td></center>
+        <h2></h2>
 <?php
 
 session_start();
@@ -36,7 +34,6 @@ echo"<script>alert('Removed From The Cart');</script>";
 if(isset($_POST['procceed']))
 {
   //echo "<script> alert('hai');</script>";
-  $dt=$_POST["dt"];
   $n=$_SESSION['login_id'];
 
 
@@ -49,18 +46,6 @@ if(isset($_POST['procceed']))
     echo"<script>alert('Username already exist!!!');</script>)";
   }
   else{*/
-  $sql2="select * from `foodorder` where `login_id`=$n";
-  $result2=mysqli_query($con,$sql2);
-  while($row=mysqli_fetch_array($result2))
-  {
-
-    $l=$row["total"];
-    $m=$row["f_item_id"];
-  }
-  $date=date('Y-m-d');
-  $sql="INSERT INTO `transaction`(`bankname`, `cardtype`,`cardnumber`, `login_id`,`total`,`tdate`,`f_item_id`,`type`) VALUES ('null','null','null','$n','$l','$date','$m','offline')";
-  $result1=mysqli_query($con,$sql);
-
 
 echo"<script>alert('Thank You,Take Your Dish From Nearest Outlet');</script>";
 
@@ -82,7 +67,9 @@ legend {
 </style>
 <body>
   <?php
-  $result5=mysqli_query($con,"select * FROM `user_details` where `login_id`='$k'");
+  $w=$_SESSION['login_id'];
+
+  $result5=mysqli_query($con,"select * FROM `user_details` where `login_id`='$w'");
   while($row=mysqli_fetch_array($result5))
   {
 
@@ -123,36 +110,7 @@ legend {
 
 <?php
 $k=$_SESSION['login_id'];
-$result4=mysqli_query($con,"select * FROM `foodorder` ");
 
-while($row=mysqli_fetch_array($result4))
-
-{
-  ?>
-  <tr>
-    <td>  Order ID </td>
-    <td><input type="text" name="orderid" value="<?php echo $row['order_id'];?>" readonly></td>
-
-  </tr>
-          <tr>
-            <td>  Food Item </td>
-            <td><input type="text" value="<?php echo $row['name'];?>" readonly></td>
-
-          </tr>
-          <tr>
-            <td>   Quantiy </td>
-            <td><input type="text" name="rq" id="rq" value="<?php echo $row['req_quantity'];?>" readonly></td>
-          </tr>
-          <tr>
-            <td>Total Amount </td>
-            <td><input type="text" value="<?php echo $row['total'];?>" readonly></td>
-          </tr>
-          <tr>
-            <td>    <input id="remove" class="btn btn-imfo btn-read-more" type="submit" name="remove" value="Remove From Cart" ></td>
-          </tr>
-
-      <?php
-    }
     ?>
 
 

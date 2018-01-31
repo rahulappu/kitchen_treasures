@@ -45,10 +45,9 @@ echo"<script>alert('Removed Successfully');</script>)";
             <div class="container">
                 <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                  <a href="index.html">Home</a>
-                  <a href="viewfooditems.html">View Food Items</a>
-                  <a href="uviewmyprofile.html">View My Profile</a>
-                  <a href="feedback.html">Send Feedback</a>
+                  <a href="admin.php">Home</a>
+
+                  <a href="logout.php">Logout</a>
                 </div>
                 <!-- Use any element to open the sidenav -->
                 <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -60,7 +59,7 @@ echo"<script>alert('Removed Successfully');</script>)";
             <h2 class="logo-name">STAFF DETAILS</h2>
               <center>
               <br><br>
-              <table border='1' align='center'  height="70" width="800" >
+              <table border='2' align='center'  height="70" width="800" >
                 <tr>
                   <td><B><i>ID</td>
 
@@ -97,7 +96,7 @@ echo"<script>alert('Removed Successfully');</script>)";
 
 <td><?php echo $row['staff_phone'];?></td>
 
-<td><img src="<?php echo $row['staff_image']?>" height="50px" width="80px"/></td>
+<td><img src="<?php echo $row['staff_image']?>" height="120px" width="140px"/></td>
 <input type="hidden" name="id" value="<?php echo $row["staff_id"]; ?>"/>
 <td><input type="submit" name="remove" id="remove" style="width: 80px; height: 40px; padding:0"></td>
 </tr>

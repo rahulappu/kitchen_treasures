@@ -340,7 +340,7 @@ table {
 }
 .content-holder address strong {
     color: #FFB03B;
-    padding: 10px 0px;
+    padding: 20px 0px;
 }
 .details-text p {
     color: #E8E8E8;
@@ -527,4 +527,7 @@ table {
     }
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+.custom{
+	display: inline-block;
 }
